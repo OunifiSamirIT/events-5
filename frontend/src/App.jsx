@@ -30,6 +30,9 @@ import { useSelector } from "react-redux";
 import { setAuth } from "./util/setAuth";
 import Events from "../src/pages/Home";
 import MUSIC from "../src/pages/MusicMixer";
+import Chat from './chatapp';
+import PL from './pages/playlist';
+
 if (window.localStorage.jwt) {
   const decode = jwt_decode(window.localStorage.jwt);
   store.dispatch(setUser(decode));
@@ -104,6 +107,7 @@ function App() {
               path="/ADDEvent"
               element={
                 <ArtistRoute user={user.role == "ARTIST"}>
+                   <Sidebar />
                   <Events />
                 </ArtistRoute>
               }
@@ -136,11 +140,23 @@ function App() {
             <Route
               path="/Payment/:id"
               element={
-                <PrivateRouter user={user}>
+                <PrivateRouter user={user.role == "USER"}>
                   <Payment />
                 </PrivateRouter>
               }
             />
+            <Route
+              path="/Payment/:id"
+              element={
+                <PrivateRouter user={user.role == "ARTIST"}>
+                  <Payment />
+                </PrivateRouter>
+              }
+            />
+
+
+
+
             <Route
               path="/admin"
               element={
@@ -149,6 +165,9 @@ function App() {
                 </AdminRouter>
               }
             />
+                      <Route path="/chat" element={  <Chat />} />
+                      <Route path="/playlist" element={  <PL />} />
+
             <Route path="*" element={<NotFound />} />
             <Route path="/noaccess" element={<NoAccess />} />
           </Routes>

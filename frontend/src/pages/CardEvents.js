@@ -61,7 +61,7 @@ const CardMeetup = () => {
                 <CardMedia
                   component="img"
                   height="194"
-                 image={"http://localhost:3600/images"+item.image}
+                  image={`http://localhost:3600/uploads/images/${item.image}`} // Include the "uploads/images" directory path
                   alt="Paella dish"
                 />
                 <CardContent>

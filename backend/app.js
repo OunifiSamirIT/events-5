@@ -10,6 +10,7 @@ const mongoose = require('mongoose')
 const payment = require('./routes/payment');
 
 var routerUsers = require('./routes/Event.route');
+var routerplaylist = require('./routes/playlistRoutes');
 
 var indexRouter = require('./routes/index');
 const passport = require('passport')
@@ -44,6 +45,7 @@ if (process.env.NODE_ENV === "production") {
         );
     });
 }
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -52,4 +54,5 @@ app.use(cors());
 app.use('/payment', payment);
 
 app.use('/api', routerUsers)
+app.use('/api', routerplaylist)
 module.exports = app;

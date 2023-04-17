@@ -54,15 +54,16 @@ function Home() {
   const create = (event) => {
     event.preventDefault();
     window.location.reload();
+    
     const formData = new FormData();
     formData.append("image", selectedFile);
-    for (let key in form) {
-      formData.append(key, form[key]);
-    }
-
-    dispatch(AddEvents(form, setShow, setMessage));
+    formData.append("Nom", form.Nom);
+    formData.append("Date", form.Date);
+    formData.append("Artistes", form.Artistes);
+    formData.append("Lien", form.Lien);
+  
+    dispatch(AddEvents(formData, setShow, setMessage));
   };
-
   const handleChange = (event) => {
     const { value } = event.target;
     console.log(event);
@@ -141,7 +142,8 @@ function Home() {
     document.body.innerHTML = originalContents;
   }
   return (
-    <div className="row p-4" style={{ backgroundImage: `url(${D})`, backgroundSize: "100% auto"}} >
+    <div className="row p-4" style={{marginLeft:150, backgroundImage: `url(${D})`, backgroundSize: "100% auto"}} >
+      
       <Alert message={message} show={show} />
      
       <Row
@@ -150,7 +152,7 @@ function Home() {
           justifyContent: "center",
           alignItems: "center",
         }}
-      > <Col style={{xs:"3"}}><h1 style={{marginLeft:50,width:150,borderRadius:30,textAlign:"center", boxShadow:'1px 20px 9px #290815'}}>Events</h1>   <img style={{marginLeft:70,marginTop:70  }}  src={S} alt=""/> </Col>
+      > <Col style={{xs:"3"}}><h1 style={{marginLeft:100,width:150,borderRadius:30,textAlign:"center", boxShadow:'1px 20px 9px #290815'}}>Events</h1>   <img style={{marginLeft:95,marginTop:70  }}  src={S} alt=""/> </Col>
      <Col style={{width:50,xs:"4"}}>   <div  style={{width:750,marginRight:750,padding:20,borderRadius:30, marginBottom:20,boxShadow:'10px 5px 14px #290815'}}>
      
           <h5>Nom</h5>
@@ -189,15 +191,8 @@ function Home() {
           />
           <h5>Image</h5>
           <div class="ta-left mT10">
-          <input
-  value={form.image}
-  onChange={(e) => {
-    setSelectedFile(e.target.files[0]);
-    console.log(e.target.files[0]);
-  }}
-  type="file"
-  name="image" // add this line
-/>
+          <input type="file" onChange={(e) => setSelectedFile(e.target.files[0])} />
+
           </div>
 
           <button className="button-62" onClick={create} type="submit">
