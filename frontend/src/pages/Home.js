@@ -152,8 +152,8 @@ function Home() {
           justifyContent: "center",
           alignItems: "center",
         }}
-      > <Col style={{xs:"3"}}><h1 style={{marginLeft:100,width:150,borderRadius:30,textAlign:"center", boxShadow:'1px 20px 9px #290815'}}>Events</h1>   <img style={{marginLeft:95,marginTop:70  }}  src={S} alt=""/> </Col>
-     <Col style={{width:50,xs:"4"}}>   <div  style={{width:750,marginRight:750,padding:20,borderRadius:30, marginBottom:20,boxShadow:'10px 5px 14px #290815'}}>
+      > <Col style={{xs:"3"}}><h1 style={{marginLeft:80,width:150,borderRadius:30,textAlign:"center", boxShadow:'1px 20px 9px #290815'}}>Events</h1>   <img style={{marginLeft:95,marginTop:70  }}  src={S} alt=""/> </Col>
+     <Col style={{width:50,xs:"4"}}>   <div  style={{width:450,marginRight:950,padding:20,borderRadius:30, marginBottom:20,boxShadow:'10px 5px 14px #290815'}}>
      
           <h5>Nom</h5>
           <Input
@@ -224,7 +224,7 @@ function Home() {
       <div className="col-12 col-lg-7"  style={{
             display: "flex",
             justifyContent: "center",
-            alignItems: "center", marginLeft:120,width:1400, borderRadius:50,
+            alignItems: "center", marginLeft:100,width:1200, borderRadius:50,
           borderRadius:30
           }}    id="zone-to-print">
         <Table

@@ -1,5 +1,5 @@
 const express = require('express');
-const {AddEvents,DeleteEvents,FindAllEvents,FindSinglEvents,UpdateEvents } = require('../controllers/Event.controller');
+const {AddEvents,DeleteEvents,FindAllEvents,UpdateEventsfv,FindSinglEvents,UpdateEvents,favoriteEvent } = require('../controllers/Event.controller');
 const router = express.Router()
 const multer = require("multer");
 const path = require("path");
@@ -39,8 +39,10 @@ router.get('/Event/:id', FindSinglEvents)
 
 /* add user */
 router.put('/Event/:id', UpdateEvents)
+router.put('/Eventfv/:id', UpdateEventsfv)
 
 /* add user */
 router.delete('/Event/:id', DeleteEvents)
+router.put("/:id/favorite", favoriteEvent);
 
 module.exports = router;

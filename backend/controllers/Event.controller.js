@@ -133,6 +133,31 @@ const UpdateEvents = async (req, res) => {
   }
 };
 
+
+
+const UpdateEventsfv = async (req, res) => {
+  const { favorit } = req.body;
+
+  try {
+    const event = await Event.findByIdAndUpdate(
+      { _id: req.params.id },
+      { favorit },
+      { new: true }
+    );
+
+    if (!event) {
+      return res.status(404).json({ message: "Event not found" });
+    }
+
+    res.status(200).json(event);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Server Error");
+  }
+};
+
+
+
 const DeleteEvents = async (req, res) => {
   try {
     await Event.deleteOne({ _id: req.params.id });
@@ -142,10 +167,33 @@ const DeleteEvents = async (req, res) => {
   }
 };
 
+const favoriteEvent = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const event = await Event.findById(id);
+
+    if (!event) {
+      return res.status(404).json({ message: "Event not found" });
+    }
+
+    // Update the event with a new "favorite" count
+    event.favorites = event.favorites ? event.favorites + 1 : 1;
+
+    const updatedEvent = await event.save();
+
+    res.json(updatedEvent);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
+
+
+
 module.exports = {
-  AddEvents,
+  AddEvents,UpdateEventsfv,
   FindAllEvents,
   FindSinglEvents,
   UpdateEvents,
-  DeleteEvents,
+  DeleteEvents,favoriteEvent
 };

@@ -103,8 +103,22 @@ function Register() {
                         <Inputs name="email" label="Email" type="text" icon="fa-solid fa-at" onChangeHandler={onChangeHandler} errors={errors.email}/>
                         <Inputs name="password" label="Password" type="password" icon="fa-solid fa-key" onChangeHandler={onChangeHandler} errors={errors.password}/>
                         <Inputs name="confirm" label="Confirm password" type="password" icon="fa-solid fa-key" onChangeHandler={onChangeHandler} errors={errors.confirm}/>
-                        <Inputs name="role" label="role" type="text" icon="fa-solid fa-restroom"  onChangeHandler={onChangeHandler} errors={errors.role}/>
-                       
+                        {/* <Inputs name="role" label="role" type="text" icon="fa-solid fa-restroom"  onChangeHandler={onChangeHandler} errors={errors.role}/> */}
+                        <fieldset className="form-group">
+  <div className="form-check">
+    <input className="form-check-input" type="radio" name="role" id="role1" value="ARTIST" onChange={onChangeHandler} />
+    <label className="form-check-label" htmlFor="role1">
+      ARTIST
+    </label>
+  </div>
+  <div className="form-check">
+    <input className="form-check-input" type="radio" name="role" id="role2" value="USER" onChange={onChangeHandler} />
+    <label className="form-check-label" htmlFor="role2">
+      User
+    </label>
+  </div>
+  {errors.role && <div className="invalid-feedback">{errors.role}</div>}
+</fieldset>
                         <div className="d-flex justify-content-between">
                             <button type="submit" className="btn btn-outline-primary">Save <i className="fa-solid fa-floppy-disk"></i></button>
                             <Link to="/login">I have account</Link>

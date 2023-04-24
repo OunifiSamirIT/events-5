@@ -6,7 +6,12 @@ const EventSchema = new Schema({
     Date: String,
     Artistes  :  String,
     Lien: String,
-    image:  String
+    image:  String, 
+    favorit: {
+        type: Boolean,
+        default: false
+      },
+    
    
 }, {timestamps: true})
 

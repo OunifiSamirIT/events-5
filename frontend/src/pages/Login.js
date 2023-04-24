@@ -33,7 +33,7 @@ function Login() {
         <div className="auth-wrapper auth-cover">
           <Row className="auth-inner m-0">
             
-            <a
+            {/* <a
               className="brand-logo"
               href="/"
               
@@ -44,7 +44,7 @@ function Login() {
                 alt="logo"
                 style={{ height: 50 }}
               />
-            </a>
+            </a> */}
             <Col
               className="d-none d-lg-flex align-items-center p-5"
               lg="8"
